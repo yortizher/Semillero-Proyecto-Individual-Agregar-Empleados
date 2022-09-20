@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="row  text-center">
+            <div class="col">
+                <div class="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
+                    <!--   Sombras en el formulario-->
+                    <form class="row g-3 " >
+                        <div class="col-md-2">
+                            <label for="cedula" class="form-label">Cedula</label>
+                            <input v-model.number="cedula"  id="cedula" name="cedula" type="number"   class="form-control text-center" placeholder="Cedula" required>
+                            <span class="error" v-if="error1" style="color:red;">Ingrese el valor</span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="empleado" class="form-label">Empleado</label>
+                            <input v-model="empleado" id="empleado" name="empleado" type="text" class="form-control text-center" placeholder="Empleado" required>
+                            <span class="error" v-if="error2" style="color:red;">Ingrese el valor</span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="horas" class="form-label">Horas</label>
+                            <input v-model.number="horas" id="horas" name="horas" type="number" class="form-control text-center" placeholder="Horas" required>
+                            <span class="error" v-if="error3" style="color:red;">Ingrese el valor</span>
+                        </div>
+                        <div class="col-md-3 mt-4">
+                            <label class="" for="pais">Cargo</label>
+                            <select v-model="seleccionCargo" @change="getIndex" name="seleccionCargo" id="seleccionCargo" class="form-select text-center"  required>
+                                <option v-for="(item,index) in cargo" v-text="item.nombreCargo" >Seleccione</option>
+                            </select>
+                            <span class="error" v-if="error4" style="color:red;">Ingrese el valor</span>
+                        </div>
+                        <div class=" col d-grid gap-2 md-1 mt-5">
+                            <button @click="validacionHora" type="button" class="md-2 btn btn-primary ">Agregar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <table class="table  table-bordered border-secondary">
+                <thead>
+                  <tr class="table table-info table-bordered border-secondary text-center"> <!--Centrar titulo de tablas-->
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Empleado</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Total a Pagar</th>
+                    <th scope="col">Borrar empleados</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr v-for="(item,index) in empleados" >
+                    <td v-text="item.cedula"></td>
+                    <td v-text="item.empleado"></td>
+                    <td v-text="item.horas"></td>
+                    <td v-text="item.seleccionCargo"></td>
+                    <td v-text="item.totalPagar"></td>
+                    <td >
+                        <button @click="borarEmpleados(index)" class="btn btn-outline-info" type="button">Borrar</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./main.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
