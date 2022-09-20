@@ -1,1 +1,1 @@
-# Semillero-Proyectos-Individual
+# Semillero Proyectos Individuales
